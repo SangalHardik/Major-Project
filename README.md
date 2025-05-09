@@ -1,57 +1,71 @@
-## Automated Code to Flowchart Generator
-Convert structured C++-like source code into dynamic flowcharts using AI-powered parsing and visualization.
+
+# Automated Code to Flowchart Generator
+
+A Python-based tool that converts structured C++-like code into clean, interactive flowcharts.  
+It combines lexical parsing, syntax tree generation, and flowchart rendering in real-time using PLY, Graphviz, and Streamlit.
 
 ---
 
 ## Features
 
-- Real-time flowchart generation via browser
-- Lexical and syntax analysis using PLY (`lex`, `yacc`)
-- Graphviz-powered flowchart rendering
-- Syntax error detection and messaging
-- Supports: `if`, `else`, `for`, `while`, `cin`, `cout`
-- Works with nested blocks, I/O, and conditions
-
----
-
-## Installation & Setup
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/your-username/flowchart-generator.git
-cd flowchart-generator
-
-# 2. Create a virtual environment
-python -m venv env
-.\env\Scripts\activate  # On Windows
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Launch the app
-streamlit run app.py
-````
+- Real-time conversion of C++-like logic into flowcharts
+- Lexer and Parser built using `ply.lex` and `ply.yacc`
+- Visual representation using Graphviz (processes, decisions, loops)
+- Syntax error feedback with user-friendly messages
+- Streamlit-based frontend for instant interaction
+- Modular code with clean separation: lexer, parser, renderer, frontend
 
 ---
 
 ## Project Structure
 
+```
+
+├── app.py               # Flask
+├── main\_flowchart.py   # Graphviz flowchart generation logic
+├── plytoken.py          # Token definitions (lexer)
+├── plyparser.py         # Grammar rules (parser)
+├── parsetab.py          # PLY-generated parser table
+├── front.html           # Optional static UI (unused in Streamlit)
+├── requirements.txt     # Required libraries
+
+````
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the Repository
 ```bash
-├── app.py               # Streamlit frontend
-├── views.py             # Core backend orchestration
-├── pdf_ingest.py        # Optional: PDF parsing agent
-├── sql_agent.py         # Optional: SQL query agent
-├── plyparser.py         # Grammar + parser (PLY)
-├── plytoken.py          # Tokenizer (PLY lexer)
-├── requirements.txt     # Python dependencies
-├── sample.pdf           # Sample input
+git clone https://github.com/yourusername/flowchart-generator.git
+cd flowchart-generator
+````
+
+### 2. Create & Activate Virtual Environment
+
+```bash
+python -m venv env
+.\env\Scripts\activate         # Windows
+# source env/bin/activate      # macOS/Linux
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the Application
+
+```bash
+streamlit run app.py
 ```
 
 ---
 
-## 🧪 Sample Output
+## 📸 Sample Output
 
-> Sample C++-like input:
+Input:
 
 ```cpp
 int a = 5;
@@ -62,25 +76,31 @@ if (a > 2) {
 }
 ```
 
-> Resulting Flowchart:
-> ![Flowchart Screenshot](images/sample-flowchart.png)
+Output:
+Flowchart with:
+
+* Start node
+* Process block: `int a = 5`
+* Decision node: `a > 2`
+* Two branches: `cout << "Big"` and `cout << "Small"`
+* End node
 
 ---
 
 ## Use Cases
 
-* Beginners learning programming logic
-* Visual aid for teaching control flow
-* Flowchart creation for documentation
-* Debugging complex logic structures
+* For students: Learn control flow visually
+* For teachers: Demonstrate logic clearly
+* For devs: Quickly document or debug logic
+* For documentation: Auto-generate logic diagrams from code
 
 ---
 
-## Future Improvements
+## Future Scope
 
-* Semantic analysis and deeper code checks
-* Multi-language support (Python, Java)
-* Drag-and-drop visual editing
-* LMS/IDE integration for grading
+* Semantic validation (undeclared variables, unreachable code)
+* Multi-language support (Python, Java, etc.)
+* Better layout customization for large diagrams
+* Integration with LMS or IDEs for grading and real-time visualization
 
 ---
